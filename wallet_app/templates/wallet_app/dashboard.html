@@ -1,0 +1,100 @@
+
+
+{% extends 'wallet_app/base.html' %}
+<!-- 
+    This line tells Django to inherit from the 'base.html' template. 
+    It allows us to reuse the structure and styling defined in 'base.html'.
+-->
+
+{% block content %}
+<!-- 
+    This line defines a block named 'content'. 
+    The content inside this block will be inserted into the corresponding block in 'base.html'.
+-->
+
+<h1>Welcome, {{ user.username }}!</h1>
+<!-- 
+    This is a heading (h1) that displays a welcome message with the logged-in user's username.
+-->
+
+<h2>Your Balance: ${{ user_profile.balance|floatformat:2 }}</h2>
+<!-- 
+    This is a heading (h2) that displays the user's balance. 
+    The 'floatformat:2' filter formats the balance to 2 decimal places.
+-->
+
+<form method="get" action="{% url 'dashboard' %}">
+    <!-- 
+        This starts an HTML form. The 'method="get"' attribute specifies that the form data 
+        will be sent to the server using the GET method when the form is submitted. 
+        The 'action' attribute specifies the URL to which the form data will be sent (the dashboard page).
+    -->
+
+    <label for="category">Filter by Category:</label>
+    <!-- 
+        This is a label for the category dropdown. 
+        The 'for="category"' attribute associates the label with the dropdown.
+    -->
+
+    <select name="category" id="category">
+        <!-- 
+            This creates a dropdown menu for selecting a transaction category. 
+            The 'name="category"' attribute specifies the name of the form field.
+        -->
+
+        <option value="">All</option>
+        <!-- 
+            This is an option in the dropdown menu. 
+            The 'value=""' attribute specifies that no category filter will be applied if this option is selected.
+        -->
+
+        <option value="FOOD">Food</option>
+        <option value="TRANSPORT">Transport</option>
+        <option value="ENTERTAINMENT">Entertainment</option>
+        <option value="SHOPPING">Shopping</option>
+        <option value="BILLS">Bills</option>
+        <option value="OTHER">Other</option>
+        <!-- 
+            These are additional options in the dropdown menu. 
+            Each option corresponds to a transaction category.
+        -->
+    </select>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+    <!-- 
+        This is a submit button. When clicked, it sends the form data to the server. 
+        The 'class="btn btn-primary"' adds Bootstrap styling to make the button look nice.
+    -->
+</form>
+
+<h3>Recent Transactions</h3>
+<!-- 
+    This is a heading (h3) that displays "Recent Transactions".
+-->
+
+<ul>
+<!-- 
+    This starts an unordered list (<ul>) to display the recent transactions.
+-->
+
+{% for transaction in recent_transactions %}
+    <!-- 
+        This starts a loop that iterates over the 'recent_transactions' list. 
+        The 'recent_transactions' variable is passed from the view and contains the user's recent transactions.
+    -->
+
+    <li>{{ transaction.date|date:"Y-m-d" }} - {{ transaction.category }} - ${{ transaction.amount|floatformat:2 }}</li>
+    <!-- 
+        This creates a list item (<li>) for each transaction. 
+        The transaction details (date, category, and amount) are displayed using Django template variables.
+        The 'date:"Y-m-d"' filter formats the date as 'YYYY-MM-DD'.
+        The 'floatformat:2' filter formats the amount to 2 decimal places.
+    -->
+{% endfor %}
+</ul>
+
+{% endblock %}
+<!-- 
+    This ends the 'content' block. 
+    Any content after this line will not be included in the block.
+-->

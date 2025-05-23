@@ -1,0 +1,137 @@
+
+
+{% extends 'wallet_app/base.html' %}
+<!-- 
+    This line tells Django to inherit from the 'base.html' template. 
+    It allows us to reuse the structure and styling defined in 'base.html'.
+-->
+
+{% block content %}
+<!-- 
+    This line defines a block named 'content'. 
+    The content inside this block will be inserted into the corresponding block in 'base.html'.
+-->
+
+<h1>Reports</h1>
+<!-- 
+    This is a heading (h1) that displays "Reports" at the top of the page.
+-->
+
+<h2>Monthly Spending</h2>
+<!-- 
+    This is a heading (h2) that displays "Monthly Spending".
+-->
+
+<table class="table">
+    <!-- 
+        This creates a table using Bootstrap's table class. 
+        The 'table' class adds default Bootstrap styling to the table.
+    -->
+
+    <thead>
+        <!-- 
+            This defines the table header section.
+        -->
+
+        <tr>
+            <!-- 
+                This creates a table row (<tr>) for the header.
+            -->
+
+            <th>Month</th>
+            <!-- 
+                This creates a table header cell (<th>) for the "Month" column.
+            -->
+
+            <th>Total Spending</th>
+            <!-- 
+                This creates a table header cell (<th>) for the "Total Spending" column.
+            -->
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- 
+            This defines the table body section.
+        -->
+
+        {% for month in monthly_spending %}
+            <!-- 
+                This starts a loop that iterates over the 'monthly_spending' list. 
+                The 'monthly_spending' variable is passed from the view and contains the monthly spending data.
+            -->
+
+            <tr>
+                <!-- 
+                    This creates a table row (<tr>) for each month.
+                -->
+
+                <td>{{ month.date__month }}</td>
+                <!-- 
+                    This creates a table data cell (<td>) for the month. 
+                    The 'month.date__month' variable contains the month number (e.g., 1 for January, 2 for February).
+                -->
+
+                <td>${{ month.total|floatformat:2 }}</td>
+                <!-- 
+                    This creates a table data cell (<td>) for the total spending for the month. 
+                    The 'month.total' variable contains the total spending, and the 'floatformat:2' filter formats it to 2 decimal places.
+                -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Category-Wise Spending</h2>
+<!-- 
+    This is a heading (h2) that displays "Category-Wise Spending".
+-->
+
+<table class="table">
+    <!-- 
+        This creates another table for category-wise spending.
+    -->
+
+    <thead>
+        <tr>
+            <th>Category</th>
+            <!-- 
+                This creates a table header cell (<th>) for the "Category" column.
+            -->
+
+            <th>Total Spending</th>
+            <!-- 
+                This creates a table header cell (<th>) for the "Total Spending" column.
+            -->
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for category in category_spending %}
+            <!-- 
+                This starts a loop that iterates over the 'category_spending' list. 
+                The 'category_spending' variable is passed from the view and contains the category-wise spending data.
+            -->
+
+            <tr>
+                <td>{{ category.category }}</td>
+                <!-- 
+                    This creates a table data cell (<td>) for the category name. 
+                    The 'category.category' variable contains the category (e.g., "FOOD", "TRANSPORT").
+                -->
+
+                <td>${{ category.total|floatformat:2 }}</td>
+                <!-- 
+                    This creates a table data cell (<td>) for the total spending for the category. 
+                    The 'category.total' variable contains the total spending, and the 'floatformat:2' filter formats it to 2 decimal places.
+                -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+<!-- 
+    This ends the 'content' block. 
+    Any content after this line will not be included in the block.
+-->

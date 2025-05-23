@@ -1,0 +1,52 @@
+
+
+# Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django files
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.db
+*.manifest
+*.spec
+*.sql
+
+# Environment files
+.env
+.venv/
+venv/
+env/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Static and media files
+/static/
+/media/
+
+# macOS files
+.DS_Store
+
+# Node.js files
+node_modules/
+
+# Other
+*.log
+*.bak
+*.backup
+*.tmp
+*.temp
+*.pid
+*.rdb
+
