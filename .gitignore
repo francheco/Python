@@ -1,4 +1,12 @@
+# Ignore everything
+*
 
+# But not these files...
+!.gitignore
+!Django/
+!Django/Wallet/
+!Django/Wallet/wallet_project/
+!Django/Wallet/wallet_project/**
 
 # Python files
 __pycache__/
