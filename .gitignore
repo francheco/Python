@@ -1,22 +1,58 @@
-echo "# Python
+
+
+# But not these files...
+!.gitignore
+!Django/
+!Django/Wallet/
+!Django/Wallet/wallet_project/
+!Django/Wallet/wallet_project/**
+
+# Python files
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 
-# Django
+# Django files
+*.sqlite3
 *.log
-local_settings.py
-db.sqlite3
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.db
+*.manifest
+*.spec
+*.sql
 
-# Environment
+# Environment files
 .env
+.venv/
+venv/
+env/
+ENV/
 
-# IDE
-.vscode/
+# IDE files
 .idea/
+.vscode/
+*.swp
+*.swo
 
-# But don't ignore these important files and directories
-!README.md
-!manage.py
-!config_project/
-!wallet_app/" > .gitignore
+# Static and media files
+/static/
+/media/
 
+# macOS files
+.DS_Store
+
+# Node.js files
+node_modules/
+
+# Other
+*.log
+*.bak
+*.backup
+*.tmp
+*.temp
+*.pid
+*.rdb
