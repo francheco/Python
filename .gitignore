@@ -1,4 +1,4 @@
-Django/Wallet/*
+#Django/Wallet/*
 git add Cisco/
 git add Juniper/
 git add README.md
@@ -8,8 +8,8 @@ Numpy/
 Pandas/
 
 # But not these directories...
-!Django/
-!Django/Wallet/
+#!Django/
+#!Django/Wallet/
 
 # Python files
 __pycache__/
