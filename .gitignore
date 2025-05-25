@@ -1,7 +1,58 @@
 
-.DS_Store
+# But not these files...
+!.gitignore
+!Django/
+!Django/Wallet/
+!Django/Wallet/wallet_project/
+!Django/Wallet/wallet_project/**
+
+# Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django files
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.db
+*.manifest
+*.spec
+*.sql
+
+# Environment files
+.env
 .venv/
-Basic/
-Django/
-Numpy/
-Pandas/
+venv/
+env/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Static and media files
+/static/
+/media/
+
+# macOS files
+.DS_Store
+
+# Node.js files
+node_modules/
+
+# Other
+*.log
+*.bak
+*.backup
+*.tmp
+*.temp
+*.pid
+*.rdb
+
