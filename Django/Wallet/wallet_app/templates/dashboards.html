@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+<h2>Your Balance: ${{ user_profile.balance|floatformat:2 }}</h2>
+
+<form method="get" action="{% url 'dashboard' %}">
+    <label for="category">Filter by Category:</label>
+    <select name="category" id="category">
+        <option value="">All</option>
+        <option value="FOOD">Food</option>
+        <option value="TRANSPORT">Transport</option>
+        <option value="ENTERTAINMENT">Entertainment</option>
+        <option value="SHOPPING">Shopping</option>
+        <option value="BILLS">Bills</option>
+        <option value="OTHER">Other</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<h3>Recent Transactions</h3>
+<ul>
+{% for transaction in recent_transactions %}
+    <li>{{ transaction.date|date:"Y-m-d" }} - {{ transaction.category }} - ${{ transaction.amount|floatformat:2 }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
