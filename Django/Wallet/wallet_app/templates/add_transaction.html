@@ -1,13 +1,21 @@
 
 
 {% extends 'base.html' %}
+<!-- Extends the base template which contains common layout and styling -->
 
 {% block content %}
 <h1>Add Transaction</h1>
+<!-- Heading for the page -->
+
 <form method="post">
     {% csrf_token %}
+    <!-- Include CSRF token for security to prevent cross-site request forgery -->
+
     {{ form.as_p }}
+    <!-- Render the form fields as paragraphs for easy formatting -->
+
     <button type="submit" class="btn btn-primary">Add Transaction</button>
+    <!-- Submit button styled with Bootstrap class -->
 </form>
 {% endblock %}
 

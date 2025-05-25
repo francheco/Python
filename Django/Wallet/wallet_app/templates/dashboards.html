@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
+<!-- Extends the base layout template -->
 
 {% block content %}
 <h1>Welcome, {{ user.username }}!</h1>
-<h2>Your Balance: ${{ user_profile.balance|floatformat:2 }}</h2>
+<!-- Displays a greeting with the username -->
 
+<h2>Your Balance: ${{ user_profile.balance|floatformat:2 }}</h2>
+<!-- Shows the user's current balance formatted to 2 decimal places -->
+
+<!-- Filter form to select transaction category -->
 <form method="get" action="{% url 'dashboard' %}">
     <label for="category">Filter by Category:</label>
+    <!-- Label for the dropdown menu -->
+
     <select name="category" id="category">
         <option value="">All</option>
+        <!-- Option to show all transactions -->
+
+        <!-- List of predefined categories for filtering -->
         <option value="FOOD">Food</option>
         <option value="TRANSPORT">Transport</option>
         <option value="ENTERTAINMENT">Entertainment</option>
@@ -15,13 +25,20 @@
         <option value="BILLS">Bills</option>
         <option value="OTHER">Other</option>
     </select>
+
     <button type="submit" class="btn btn-primary">Filter</button>
+    <!-- Submit button styled with Bootstrap -->
 </form>
 
 <h3>Recent Transactions</h3>
+<!-- Heading for recent transactions list -->
+
 <ul>
 {% for transaction in recent_transactions %}
+    <!-- Loop through recent transactions -->
+
     <li>{{ transaction.date|date:"Y-m-d" }} - {{ transaction.category }} - ${{ transaction.amount|floatformat:2 }}</li>
+    <!-- Display each transaction's date, category, and amount -->
 {% endfor %}
 </ul>
 {% endblock %}
