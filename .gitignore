@@ -1,4 +1,10 @@
 
+
+Basic/
+Numpy/
+Pandas/
+
+
 # But not these files...
 !.gitignore
 !Django/
